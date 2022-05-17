@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { GifGrid } from './GifGrid';
 
 
 export const AddCategory = ({ setcategories }) => {
