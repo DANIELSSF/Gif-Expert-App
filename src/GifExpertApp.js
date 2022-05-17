@@ -12,7 +12,7 @@ export const GifExpertApp = () => {
 
     return (
         <>
-            <h2>GifExpertApp</h2>
+            <h2 className='animate__animated animate__headShake'>GifExpertApp</h2>
             <AddCategory setcategories={setcategories} />
             <hr />
             <ol>
