@@ -18,8 +18,9 @@ describe('Pruebas en <AddCategory/>', () => {
     test('Debe llamar al onNewCategory si tiene un valor', () => {
 
         const initialValue = 'Date a Live';
+        const onNewCategory = jest.fn();
 
-        render(<AddCategory onNewCategory={() => { }} />);
+        render(<AddCategory onNewCategory={onNewCategory} />);
 
         const input = screen.getByLabelText('input-search');
         const form = screen.getByRole('form');
@@ -29,6 +30,23 @@ describe('Pruebas en <AddCategory/>', () => {
 
         expect(input.value).toBe('');
 
+        expect(onNewCategory).toHaveBeenCalled();
+        expect(onNewCategory).toHaveBeenCalledTimes(1);
+        expect(onNewCategory).toHaveBeenCalledWith(initialValue);
+
+    });
+
+    test('la funcion onNewCategory nunca debe ser llamada si no se envia un enter', () => {
+
+        const onNewCategory = jest.fn();
+
+        render(<AddCategory onNewCategory={onNewCategory} />);
+
+        const form = screen.getByRole('form');
+        fireEvent.submit(form);
+
+        expect(onNewCategory).toHaveBeenCalledTimes(0);
+        expect(onNewCategory).not.toHaveBeenCalled();
         
     });
 });
