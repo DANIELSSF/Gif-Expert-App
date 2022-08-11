@@ -9,7 +9,6 @@ describe('Pruebas en getGifs.js', () => {
         const gifs = await getGifs('Date a live');
 
         expect(gifs.length).toBeGreaterThan(0);
-        console.log(gifs);
 
         expect(gifs[0]).toEqual({
 
