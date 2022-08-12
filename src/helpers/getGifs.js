@@ -1,18 +1,15 @@
 
- export const getGifs = async (category) => {
-    //My Dress-Up Darling
-    const url = `https://api.giphy.com/v1/gifs/search?limit=7&api_key=lLqVsEogBt7Jjugu4F7BdT4rC3KFBhoY&q=${encodeURI(category)}`;
-    const resp = await fetch(url);
+export const getGifs = async( category ) => {
+
+    const url = `https://api.giphy.com/v1/gifs/search?api_key=kaJ1JwD4CuQgYun7YpTQpTr5p1qs1sQn&q=${ category }&limit=10`;
+    const resp = await fetch( url );
     const { data } = await resp.json();
 
-    const gifs = data.map(img => {
-        return {
-            id: img.id,
-            tittle: img.tittle,
-            url: img.images?.downsized_medium.url,
-        }
-    })
-
-   return gifs;
-
+    const gifs = data.map( img => ({
+        id: img.id,
+        title: img.title,
+        url: img.images.downsized_medium.url
+    }));
+    
+    return gifs;
 }
